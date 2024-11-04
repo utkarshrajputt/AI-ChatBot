@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitBot - Your Health Companion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <h1>FitBot</h1>
+        <div id="chat_history" class="chat-box">
+            {% for message in messages %}
+                <div class="message {{ message['role'] }}">
+                    <p><strong>{{ message['role'] | capitalize }}:</strong> {{ message['content'] }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="input-container">
+            <input type="text" id="user_input" placeholder="Type your message..." required>
+            <button type="button" onclick="sendMessage()">Send</button>
+        </div>
+        <div id="waiting_message" class="waiting-message">Wait...</div>
+    </div>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
